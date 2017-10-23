@@ -38,8 +38,9 @@ def new_report(test_report):
     return file_new  
   
 if __name__ == "__main__":  
-    test_dir = "G:\\EclipseWorkspace\\IntaerfaceTest\\test_case"  
-    test_report = "G:\\EclipseWorkspace\\IntaerfaceTest\\test_report"  
+    
+    test_report = ".\\test_report" 
+    test_dir=".\\test_case" 
   
     discover = unittest.defaultTestLoader.discover(test_dir, pattern = 'test*.py')  
     #按照一定的格式获取当前的时间  
@@ -49,7 +50,7 @@ if __name__ == "__main__":
     filename = test_report + "\\" + now + 'result.html'  
     fp = open(filename,'wb')  
     #定义测试报告  
-    runner = HTMLTestRunner.HTMLTestRunner(stream =  fp, title = "xxx接口测试报告", description = "测试用例执行情况：")  
+    runner = HTMLTestRunner.HTMLTestRunner(stream =  fp, title = "杰因网接口测试报告", description = "测试用例执行情况：")  
     #运行测试  
     runner.run(discover)  
     fp.close() #关闭报告文件  

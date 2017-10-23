@@ -20,10 +20,10 @@ class test_loginTest(unittest.TestCase):     #封装测试环境的初始化和�
         self.header={"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"}  
         #pass  
                
-    def test_login_Name_right(self):
+    def test_login_1Name_right(self):
         ''' 测试用例：用户名和密码都正确'''
-        self.url="http://www.geneedu.cn/honeybee/passport/login/logon.do"
-        self.header={"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"}
+        #self.url="http://www.geneedu.cn/honeybee/passport/login/logon.do"
+        #self.header={"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"}
         self.data={
             "returnUrl":"",
             "userVo.loginName":"chenjiajia",
@@ -47,13 +47,10 @@ class test_loginTest(unittest.TestCase):     #封装测试环境的初始化和�
         self.assertIn("/honeybee/personcenter/index.do",self.r.text)
         self.assertEqual(1,responseData2)
         
-        print("=========================================================")
+        print("以上用例1=========================================================")
         
-    def test_login_Name_error(self):
+    def test_login_2Name_error(self):
         '''用户名密码错误'''
-        
-        self.url="http://www.geneedu.cn/honeybee/passport/login/logon.do"
-        self.header={"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"} 
 
         self.data={
             "returnUrl":"",
@@ -77,12 +74,10 @@ class test_loginTest(unittest.TestCase):     #封装测试环境的初始化和�
         self.assertEqual(self.r.status_code,200,'状态码错误')
         self.assertNotIn("/honeybee/personcenter/index.do",self.r.text)
         self.assertNotEqual(responseData2,1)
+        print("以上用例2=========================================================")
         
-    def test_login_name_password_empty(self):
+    def test_login_3Name_password_empty(self):
         '''用户名密码为空'''
-        
-        self.url="http://www.geneedu.cn/honeybee/passport/login/logon.do"
-        self.header={"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"} 
 
         self.data={
             "returnUrl":"",
@@ -106,6 +101,8 @@ class test_loginTest(unittest.TestCase):     #封装测试环境的初始化和�
         self.assertEqual(self.r.status_code,200,'状态码错误')
         self.assertEqual(responseData1,"登录名或密码为空")
         self.assertNotEqual(responseData2,1)
+        
+        print("以上用例3=========================================================")
          
             
 

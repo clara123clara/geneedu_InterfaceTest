@@ -16,12 +16,12 @@ class test_Applogin_class(unittest.TestCase):
     '''
     def setUp(self):
         unittest.TestCase.setUp(self)
+        self.url="http://yun.geneedu.cn/passport/login.do"
         
     def test_Applogin(self):
         '''
                          测试APP登陆
         '''
-        self.url="http://yun.geneedu.cn/passport/login.do"
         self.data={
             "appId":1,
             "deviceType":1,
@@ -34,12 +34,7 @@ class test_Applogin_class(unittest.TestCase):
         
         s=json.loads(self.r.text)
         print(s['message'])
-    
-        
-        if s['message'] == "用户名或密码错误!":
-           print("测试通过")
-        else:
-           print("测试用例执行未通过！！！")
+        self.assertEqual(s['message'], '用户名和密码不能为空!', '测试用例执行未通过！！！')
            
         
     def tearDown(self):
