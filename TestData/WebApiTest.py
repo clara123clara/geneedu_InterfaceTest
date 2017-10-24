@@ -39,8 +39,8 @@ class WebApiTest:
         rqurls = "http://www.geneedu.cn/honeybee/passport/login/logon.do"
         parametes = {
         "returnUrl":"",
-        "userVo.loginName":"chenjiajia",
-        "userVo.password":"ac1e1f9138e18dcca01311bd10abecf5"
+        "userVo.loginName":"test17",
+        "userVo.password":"a3ccb3fb1802b5e3"
         }
         headers = None
         

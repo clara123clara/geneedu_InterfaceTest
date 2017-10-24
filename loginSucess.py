@@ -19,8 +19,8 @@ def test_login_rigth():
    # header={"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"}
     data={
         "returnUrl":"",
-        "userVo.loginName":"chenjiajia",
-        "userVo.password":"ac1e1f9138e18dcca01311bd10abecf5"
+        "userVo.loginName":"test17",
+        "userVo.password":"a3ccb3fb1802b5e3"
         }
     respon=requests.post(url=url,data=data)  #发送请求,返回post请求
     

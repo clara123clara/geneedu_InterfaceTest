@@ -26,8 +26,8 @@ class test_loginTest(unittest.TestCase):     #封装测试环境的初始化和�
         #self.header={"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8"}
         self.data={
             "returnUrl":"",
-            "userVo.loginName":"chenjiajia",
-            "userVo.password":"ac1e1f9138e18dcca01311bd10abecf5"
+            "userVo.loginName":"test17",
+            "userVo.password":"a3ccb3fb1802b5e3"
             }
         self.r=requests.post(url=self.url, data=self.data)
         
@@ -54,7 +54,7 @@ class test_loginTest(unittest.TestCase):     #封装测试环境的初始化和�
 
         self.data={
             "returnUrl":"",
-            "userVo.loginName":"chenjiajia1",
+            "userVo.loginName":"test177",
             "userVo.password":"error"
             }
         self.r=requests.post(url=self.url, data=self.data)
