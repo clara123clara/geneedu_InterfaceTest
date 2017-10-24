@@ -10,30 +10,30 @@ import re
 
 class WebApiTest:
         
-    # 请求主方法
-    def request(self, rqtype, rqurl, paramete):
+    # 请求主方法，header为空传入
+    def request(self, rqtype, rqurl, paramete,headers):
         self.rqurl = rqurl  # API地址
         self.rqtype = rqtype  # 请求类型get or post
         self.paramete = paramete  # 请求参数
-        #self.headers = headers  # 请求头
+        self.headers = headers  # 请求头
 
         if rqtype == "get":
-            apirqhttp = requests.get(url=rqurl, params=paramete)  # 发送请求
+            apirqhttp = requests.get(url=rqurl, params=paramete,headers=headers)  # 发送请求
             code = apirqhttp.status_code  # 保存返回状态
             pam = apirqhttp.text  # 保存返回数据并将json转为dict
-            head = apirqhttp.headers
-            return code, pam,head
+            respon_head = apirqhttp.headers
+            return code, pam,respon_head
         if rqtype == "post":
-            apirqhttp = requests.post(url=rqurl, data=paramete)
+            apirqhttp = requests.post(url=rqurl, data=paramete,headers=headers)
             code = apirqhttp.status_code
             pam = apirqhttp.text
-            head = apirqhttp.headers
-            return code, pam,head
+            respon_head = apirqhttp.headers
+            return code, pam,respon_head
         else:
             print("请求参数错误，请求类型只支持get+post，请求地址支持string，参数支持dict")
      
             
-    # 获取登陆用户的cookies值
+    # 获取登陆成功的用户的cookies值
     def getcookies(self):
         rqtypes = "post"
         rqurls = "http://www.geneedu.cn/honeybee/passport/login/logon.do"
@@ -44,7 +44,7 @@ class WebApiTest:
         }
         headers = None
         
-        cod, pam ,head= WebApiTest().request(rqtypes, rqurls, parametes)  # 掉用request方法请求登录
+        cod, pam ,head= WebApiTest().request(rqtypes, rqurls, parametes,headers)  # 掉用request方法请求登录
         responPam = json.loads(pam)  # 保存返回数据并将json转为dict
         
         #print(cod)
@@ -124,13 +124,11 @@ if __name__ == '__main__':
         aa="{"+a+"}"
         json_a=json.loads(aa)
         print("用户登陆参数json_a对象：",json_a)
+        
+        headers = None
 
-    
-
-        access_token = my_apitest.getcookies()  # 获取token
-        headers = {"Authorization": access_token}
-        codetest, pamtest,head = my_apitest.request(rqtypes, rqurls, json_a)
-        print ("用例编号：", case_nums, "code码：", codetest,'返回的head数据:',head)
+        codetest, pamtest,respons_head = my_apitest.request(rqtypes, rqurls, json_a,headers)
+        print ("用例编号：", case_nums, "code码：", codetest,'返回的head数据:',respons_head)
         print ("返回参数：",pamtest)
         print("================================")
     
